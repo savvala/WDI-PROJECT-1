@@ -1,3 +1,52 @@
 body {
+  display: flex;
   background: lighten(grey, 40%);
+  align-items: center;
+}
+main {
+  display: flex;
+  margin: auto;
+  width: 960px;
+  height: 960px;
+  align-items: center;
+}
+
+#ball {
+  display: inline-block;
+  position: absolute;
+  left: 200px;
+  background-color: black;
+  width: 15px;
+  height: 15px;
+  align-items: center;
+
+
+}
+
+.box {
+  display: inline-block;
+  position: absolute;
+  border: solid black;
+  border-width: 7px 7px 7px 0;
+  width: 150px;
+  height: 150px;
+  align-items: center;
+  left: 800px;
+}
+
+.target {
+  display: inline-block;
+  position:absolute;
+  border: 1px solid red;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  background-color: red;
+}
+
+@keyframes rotate {
+
+
+
 }
