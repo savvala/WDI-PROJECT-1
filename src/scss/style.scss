@@ -1,52 +1,103 @@
 body {
   display: flex;
-  background: lighten(grey, 40%);
+  // background: lighten(grey, 40%);
+  background: black;
   align-items: center;
 }
 main {
   display: flex;
-  margin: auto;
-  width: 960px;
-  height: 960px;
+  height: 100vh;
   align-items: center;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  color: white;
 }
 
 #ball {
   display: inline-block;
   position: absolute;
-  left: 200px;
-  background-color: black;
-  width: 15px;
-  height: 15px;
+  left: 5%;
+  background-color: white;
+  width: 20px;
+  height: 20px;
   align-items: center;
+  border-radius: 100px;
 
 
 }
 
-.box {
+.score {
   display: inline-block;
   position: absolute;
-  border: solid black;
-  border-width: 7px 7px 7px 0;
+  left: 7%;
+  top: 70%;
+  // border: solid black;
   width: 150px;
-  height: 150px;
+  height: 20px;
+  text-align: center;
+  font-size: 100px;
+  color: white;
+}
+
+.shotClock {
+  display: inline-block;
+  position: absolute;
+  left: 7%;
+  top: 10%;
+  // border: solid black;
+  width: 150px;
+  height: 20px;
+  text-align: center;
+  font-size: 200px;
+  color: white;
+
+}
+.playAgain {
+  display: inline-block;
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  color: white;
+  left: 40%;
   align-items: center;
-  left: 800px;
+  text-align: center;
+  font-size: 70px;
+}
+
+.box {
+  position: absolute;
+  border: solid white;
+  border-width: 15px 15px 15px 0;
+  width: 10px;
+  height: 150px;
+  left: 50%;
+  animation: MoveUpDown 1.75s linear infinite;
 }
 
 .target {
   display: inline-block;
   position:absolute;
-  border: 1px solid red;
+  // border: 1px solid lighten(grey, 40%);
   top: 0;
   right: 0;
   bottom: 0;
-  width: 10px;
-  background-color: red;
+  width: 1px;
+  background-color: black;
 }
 
-@keyframes rotate {
 
-
-
+@keyframes MoveUpDown {
+  0% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 700px;
+  }
+  100% {
+    bottom: 0;
+  }
 }
