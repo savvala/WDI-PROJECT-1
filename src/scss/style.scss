@@ -13,8 +13,19 @@ main {
   overflow: hidden;
 }
 
-h1 {
+#launch {
   color: white;
+  align-items: center;
+  left: 0%;
+  top: 70%;
+  font-size: 40px;
+}
+.bar {
+  height: 10px;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 50px;
+  margin-top: 25px;
 }
 
 #ball {
@@ -66,16 +77,17 @@ h1 {
   align-items: center;
   text-align: center;
   font-size: 70px;
+  display: none;
 }
 
 .box {
   position: absolute;
   border: solid white;
-  border-width: 15px 15px 15px 0;
+  border-width: 0px 15px 0px 0;
   width: 10px;
   height: 150px;
   left: 50%;
-  animation: MoveUpDown 1.75s linear infinite;
+  animation: MoveUpDown 4s linear infinite;
 }
 
 .target {
@@ -85,8 +97,8 @@ h1 {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 1px;
-  background-color: black;
+  width: 0.5px;
+  background-color: red;
 }
 
 

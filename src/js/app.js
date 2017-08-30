@@ -6,13 +6,15 @@ $(() => {
   const $frame = $('.box');
   const $target = $('.target');
   const $score = $('.score');
-  // const $playAgain = $('.$playAgain');
-  // //
-  // $playAgain.hide();
+  const $playAgain = $('.playAgain');
+  const $bar = $('.bar');
   //
-  // function playAgain() {
-  //   $playAgain.show();
-  // }
+
+
+  function reset() {
+    timeRemaining = 60;
+    ballHiddenCount = 0;
+  }
 
   let timeRemaining = 60;
   let counter = null;
@@ -21,6 +23,10 @@ $(() => {
     timeRemaining = timeRemaining - 1;
     if (timeRemaining <= 0) {
       clearInterval(counter);
+
+      $playAgain.on('click', reset());
+
+      $playAgain.fadeIn();
     }
     if (timeRemaining === 45) {
       $frame.animate({ left: '95%'}, {
@@ -70,13 +76,36 @@ $(() => {
   }
 
 
+  let duration = 1000;
+  let durationTimerId = null;
+  let durationModifier = -10;
+  $launch.mousedown(function(){
+
+    durationTimerId = setInterval(() => {
+      if(duration === 500) durationModifier = 10;
+      if(duration === 1000) durationModifier = -10;
+      duration += durationModifier;
+      $bar.width(duration / 10 + '%');
+    }, 10);
+    console.log(duration);
+  });
+
+  function resetDuration() {
+    Duration = 1000;
+  }
+
+  $launch.mouseup(function() {
+    clearInterval(durationTimerId);
+  });
+
   $launch.click(function launch() {
+    console.log(duration);
     if(!counter) counter = setInterval(startClock, 1000);
-    $ball.animate({ left: '100%' }, {
+    $ball.mousedown().animate({ left: '100%' }, {
       progress: checkCollision,
-      duration: 1000,
+      duration: duration,
       easing: 'linear',
-      complete: resetBall, playAgain
+      complete: resetBall, resetDuration
     });
   });
 
