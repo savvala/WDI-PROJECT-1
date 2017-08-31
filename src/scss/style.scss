@@ -11,6 +11,13 @@ main {
   flex-grow: 1;
   position: relative;
   overflow: hidden;
+  font-family: 'Roboto Mono', monospace;
+
+}
+
+.placeholder {
+  position: absolute;
+  left: 7%;
 }
 
 #launch {
@@ -19,10 +26,11 @@ main {
   left: 0%;
   top: 70%;
   font-size: 40px;
+  cursor: pointer;
 }
 .bar {
   height: 10px;
-  background-color: white;
+  background-color: red;
   width: 100%;
   margin-bottom: 50px;
   margin-top: 25px;
@@ -33,10 +41,10 @@ main {
   position: absolute;
   left: 5%;
   background-color: white;
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
   align-items: center;
-  border-radius: 100px;
+  // border-radius: 100px;
 
 
 }
@@ -78,28 +86,117 @@ main {
   text-align: center;
   font-size: 70px;
   display: none;
+  cursor: pointer;
 }
 
-.box {
+.target {
   position: absolute;
   border: solid white;
   border-width: 0px 15px 0px 0;
   width: 10px;
-  height: 150px;
+  height: 100px;
   left: 50%;
-  animation: MoveUpDown 4s linear infinite;
+  animation: MoveUpDown 3s linear infinite;
 }
 
-.target {
+.LEVEL2 {
   display: inline-block;
-  position:absolute;
-  // border: 1px solid lighten(grey, 40%);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 0.5px;
-  background-color: red;
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  color: white;
+  left: 30%;
+  top: 30%;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  display: none;
 }
+
+.LEVEL3 {
+  display: inline-block;
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  color: white;
+  left: 30%;
+  top: 30%;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  display: none;
+}
+
+.LEVEL4 {
+  display: inline-block;
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  color: white;
+  left: 30%;
+  top: 30%;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  display: none;
+}
+
+.intro {
+  display: inline-block;
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  color: white;
+  left: 75%;
+  top: 22%;
+  align-items: center;
+  text-align: center;
+  font-size: 35px;
+  line-height: 55px;
+}
+
+.win {
+  display: inline-block;
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  color: white;
+  left: 30%;
+  top: 70%;
+  align-items: center;
+  text-align: center;
+  font-size: 40px;
+  display: none;
+}
+
+.ballin {
+  display: inline-block;
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  color: white;
+  left: 30%;
+  top: 70%;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  display: none;
+}
+
+.shooters {
+  display: inline-block;
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  color: white;
+  left: 30%;
+  top: 70%;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  display: none;
+}
+
 
 
 @keyframes MoveUpDown {
