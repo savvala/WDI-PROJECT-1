@@ -1,10 +1,13 @@
 $(() => {
 
-  // function audioLun() {
-  //   const luniz = new Audio('/audio/Igot5.mp3');
-  //   luniz.play();
-  // }
-  // audioLun();
+  function audioLun() {
+    const luniz = new Audio('/public/audio/Igot5.mp3');
+    luniz.autoplay = true;
+    luniz.loop = true;
+    luniz.play();
+
+  }
+  audioLun();
 
   const $shotClock = $('.shotClock');
   const $ball = $('#ball');
@@ -13,29 +16,30 @@ $(() => {
   const $target = $('.target');
   const $score = $('.score');
   const $playAgain = $('.playAgain');
-  const $bar = $('.bar');
+  // const $bar = $('.bar');
   const $level2 = $('.LEVEL2');
   const $level3 = $('.LEVEL3');
   const $level4 = $('.LEVEL4');
   const $intro = $('.intro');
-  const $shoot = $('shooters');
-  const $win = $('.win');
+  const $shoot = $('.shooters');
   const $ballin = $('.ballin');
+  const $level5 = $('.LEVEL5');
+  const $win = $('.win');
 
   let currentLevel = 1;
-
+  let timeRemaining = 20;
 
   $playAgain.on('click', nextLevel);
 
   //
   // function reset() {
-  //   // timeRemaining = 60;
-  //   // $shotClock.text(timeRemaining);
-  //   // ballHiddenCount = 0;
-  //   // $score.text(ballHiddenCount);
-  //   // counter = null;
-  //   // $playAgain.fadeOut();
-  //   // $target.removeAttr('style');
+  //   timeRemaining = 60;
+  //   $shotClock.text(timeRemaining);
+  //   ballHiddenCount = 0;
+  //   $score.text(ballHiddenCount);
+  //   counter = null;
+  //   $playAgain.fadeOut();
+  //   $target.removeAttr('style');
   //
   // }
 
@@ -43,30 +47,36 @@ $(() => {
     currentLevel++;
 
     switch(currentLevel) {
-      case 1: timeRemaining = 30;
+      case 1:
+        timeRemaining = 20;
         $level4.fadeOut();
         $level3.fadeOut();
         $level2.fadeOut();
         $playAgain.fadeOut();
         $intro.fadeIn();
         $shoot.fadeOut();
-        $win.fadeOut();
         $ballin.fadeOut();
+        $level5.fadeOut();
+        $win.fadeOut();
 
         break;
-      case 2: timeRemaining = 60;
+      case 2:
+        timeRemaining = 50;
         $intro.fadeOut();
         $level2.fadeIn();
         $target.animate({ left: '95%'}, {
           duration: 30000
         });
         break;
-      case 3: timeRemaining = 5;
+      case 3:
+        timeRemaining = 5;
         $level2.fadeOut();
         $level3.fadeIn();
         $shoot.fadeIn();
         break;
-      case 4: timeRemaining = 15;
+      case 4:
+        timeRemaining = 15;
+        $shoot.fadeOut();
         $ballin.fadeIn();
         $level3.fadeOut();
         $level4.fadeIn();
@@ -74,15 +84,23 @@ $(() => {
           duration: 15000
         });
         break;
-      case 5: timeRemaining = 65;
+      case 5:
+        timeRemaining = 60;
         $target.removeAttr('style');
         $level4.fadeOut();
         $ballin.fadeOut();
+        $level5.fadeIn();
         $target.animate({ left: '95%'}, {
-          duration: 20000
+          duration: 30000,
+          complete: () => {
+            $target.animate({ left: '50%'}, {
+              duration: 30000
+            });
+          }
         });
+
         break;
-      default: timeRemaining = 30;
+      default: timeRemaining = 20;
     }
 
     $shotClock.text(timeRemaining);
@@ -92,9 +110,6 @@ $(() => {
     $target.removeAttr('style');
   }
 
-
-
-  let timeRemaining = 30;
   let counter = null;
 
   function startClock() {
@@ -112,8 +127,10 @@ $(() => {
       } else if (currentLevel === 5 && ballHiddenCount >=30) {
         $win.fadeIn();
         $playAgain.fadeIn();
+        currentLevel = 0;
       } else {
         $playAgain.fadeIn();
+
         currentLevel = 0;
       }
     }
@@ -154,30 +171,30 @@ $(() => {
   }
 
 
-  let duration = 1000;
-  let durationTimerId = null;
-  let durationModifier = -10;
-  $launch.mousedown(function(){
+  // let duration = 1000;
+  // let durationTimerId = null;
+  // let durationModifier = -10;
+  // $launch.mousedown(function(){
+  //
+  //   // durationTimerId = setInterval(() => {
+  //   //   if(duration === 500) durationModifier = 10;
+  //   //   if(duration === 1000) durationModifier = -10;
+  //   //   duration += durationModifier;
+  //   //   $bar.width(100 - (duration / 10) + '%');
+  //   // }, 10);
+  //   // console.log(duration);
+  // });
 
-    durationTimerId = setInterval(() => {
-      if(duration === 500) durationModifier = 10;
-      if(duration === 1000) durationModifier = -10;
-      duration += durationModifier;
-      $bar.width(100 - (duration / 10) + '%');
-    }, 10);
-    console.log(duration);
-  });
-
-  $launch.mouseup(function() {
-    clearInterval(durationTimerId);
-  });
+  // $launch.mouseup(function() {
+  //   clearInterval(durationTimerId);
+  // });
 
   $launch.click(function launch() {
-    console.log(duration);
+    // console.log(duration);
     if(!counter) counter = setInterval(startClock, 1000);
-    $ball.mousedown().animate({ left: '100%' }, {
+    $ball.animate({ left: '100%' }, { //mousedown after $ball
       progress: checkCollision,
-      duration: duration,
+      duration: 1000,
       easing: 'linear',
       complete: resetBall
     });
